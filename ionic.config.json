@@ -1,5 +1,7 @@
 {
   "name": "Member",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
