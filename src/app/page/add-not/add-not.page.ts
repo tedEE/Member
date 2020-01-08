@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -8,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNotPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  addNot(){
+    // @ts-ignore
+    cordova.plugins.notification.local.schedule({
+      title: 'Design team meeting',
+      trigger: { in: 1, unit: 'minute' }
+    });
   }
 
 }

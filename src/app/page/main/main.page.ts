@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
+
 import {ModalPage} from '../modal/modal.page';
 
 @Component({
@@ -13,6 +14,7 @@ export class MainPage implements OnInit {
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
+
   }
 
   async presentModal() {
