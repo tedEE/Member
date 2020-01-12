@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 import {NotificationService} from '../../servises/notification.service';
 
@@ -12,7 +13,10 @@ export class ListNotifPage implements OnInit {
 
 
 
-  constructor(private notificationServise : NotificationService, private platform: Platform) {
+	constructor(private notificationServise : NotificationService,
+		 private platform: Platform,
+		 private routeActiv : ActivatedRoute,) {
+    console.log('list-notif constructor')
 		// надо будет вынести в main
 		this.platform.ready().then(()=>{
 			this.notificationServise.trigerEvent()
@@ -20,7 +24,7 @@ export class ListNotifPage implements OnInit {
 	 }
 
   ngOnInit() {
-    
+    // this.routeActiv.outlet
   }
 
 }

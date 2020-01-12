@@ -11,7 +11,7 @@ import {ModalPage} from '../modal/modal.page';
 })
 export class MainPage implements OnInit {
 
-  constructor(public modalController: ModalController) { }
+  constructor(public modalController: ModalController) { console.log('main constructor') }
 
   ngOnInit() {
 

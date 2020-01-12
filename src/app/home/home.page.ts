@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-home',
@@ -9,17 +12,23 @@ import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 })
 export class HomePage implements OnInit {
 
-	constructor( private platform: Platform, private backgroundMode: BackgroundMode) {}
+	constructor( private platform: Platform, private backgroundMode: BackgroundMode,
+		 private router : Router) {}
 	
 	ngOnInit(){
-		console.log('home')
-		this.platform.ready().then(()=>{
-			this.backgroundMode.on('activate').subscribe(()=> {
-				setTimeout(this.showNotification, 5000)
-				console.log('activate')})
-				})
-				this.backgroundMode.enable();
-				this.backButtonEvent()
+		// this.router.events
+		// // @ts-ignore
+		// .subscribe(e=>console.log(e.url))
+
+		// backgroundMode с прекрученными уведомлениями
+		// this.platform.ready().then(()=>{
+		// 	this.backgroundMode.on('activate').subscribe(()=> {
+		// 		setTimeout(this.showNotification, 5000)
+		// 		console.log('activate')})
+		// 		})
+		// 		this.backgroundMode.enable();
+		// 		// выход из приложения
+		// 		this.backButtonEvent()
 	}
 
 	showNotification () {
