@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-
+import {dbKey} from '../../resurses/constants';
 
 import {ModalPage} from '../modal/modal.page';
+import {DbService} from '../../servises/db.service';
 
 @Component({
   selector: 'app-main',
@@ -11,10 +12,10 @@ import {ModalPage} from '../modal/modal.page';
 })
 export class MainPage implements OnInit {
 
-  constructor(public modalController: ModalController) { console.log('main constructor') }
+  constructor(public modalController: ModalController,
+              private dbserv : DbService) { console.log('main constructor') }
 
   ngOnInit() {
-
   }
 
   async presentModal() {
@@ -24,4 +25,7 @@ export class MainPage implements OnInit {
     return await modal.present();
   }
 
+  show(){
+    this.dbserv.getElems(dbKey).then(e => console.log(e))
+  }
 }

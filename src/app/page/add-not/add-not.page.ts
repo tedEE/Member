@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { ITask } from 'src/app/resurses/interfaisis';
 import { NotificationService } from 'src/app/servises/notification.service';
 import {TasksService} from '../../servises/tasks.service';
+import {FormGroup} from '@angular/forms';
 
 
 
@@ -17,7 +18,7 @@ export class AddNotPage implements OnInit {
 
 	// location : string
 	// hint : string
-	task : ITask = {location : '', hint : ''}
+	task : ITask = {id : '', location : '', hint : ''}
 
 	constructor(private alertController: AlertController,
 							private tasksService : TasksService) {console.log('add-not constructor')}
@@ -38,16 +39,23 @@ export class AddNotPage implements OnInit {
     await alert.present();
   }
 
+  // очистка формы
+  clear(){
+	  // сюда можно добавить анимацию исчезновения формы или что то вроде этого
+    console.log('task clear')
+    this.task.location = ''
+    this.task.hint = ''
+  }
+
   addNot(){
-		console.log(this.task)
 		if(!this.task.location || !this.task.hint){
-			this.presentAlert()
-			return
-		}
-
-		this.tasksService.addTaskToList(this.task);
-
-		// this.notifService.createNotification(this.task)
-	}
+      this.presentAlert()
+      return
+    }
+    this.task.id = Date.now().toString()
+    const newTask = {...this.task} // дублирование объекта task
+    this.clear()
+    this.tasksService.addTaskToList(newTask)
+  }
 
 }
