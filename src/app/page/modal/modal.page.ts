@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import {TasksService} from '../../servises/tasks.service';
+import {ITask} from '../../resurses/interfaisis';
 
 @Component({
   selector: 'app-modal',
@@ -7,10 +9,16 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
+  @Input() task : ITask
 
-  constructor(public modalController: ModalController) { }
+  private taskForUpdated : ITask
+
+  constructor(private modalController: ModalController,
+              private taskServ : TasksService,) {}
 
   ngOnInit() {
+    this.taskForUpdated = {...this.task}
+    console.log(this.taskForUpdated)
   }
 
   closeModal() {
@@ -19,4 +27,7 @@ export class ModalPage implements OnInit {
     });
   }
 
+  update(taskForUpdated) {
+    this.taskServ.updateTaskList(taskForUpdated)
+  }
 }

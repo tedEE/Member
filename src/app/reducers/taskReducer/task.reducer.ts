@@ -3,13 +3,17 @@ import {TaskActions, taskActionsType} from './task.actions';
 
 export const taskNode = 'state';
 
+// const initialState: ITaskState = {
+//   tasks: [{
+//     id: '1',
+//     location: 'location',
+//     hint: 'hint'
+//   }]
+// }
+
 const initialState: ITaskState = {
-  tasks: [{
-    id: '1',
-    location: 'location',
-    hint: 'hint'
-  }]
-};
+  tasks: []
+}
 
 export const taskReducer = (state = initialState, action: TaskActions) => {
   switch (action.type) {

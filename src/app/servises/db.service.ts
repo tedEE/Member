@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import {Storage} from '@ionic/storage';
 import {ITask} from '../resurses/interfaisis';
 
+interface haveId {
+  id : string
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class DbService {
+export class DbService <T extends haveId> {
 
   constructor(private storage : Storage) { }
 
   //Create
-  addElem(item: ITask, dbKey : string): Promise<ITask> {
-    return this.storage.get(dbKey).then((items: ITask[]) => {
+  addElem(item: T, dbKey : string): Promise<T> {
+    return this.storage.get(dbKey).then((items: T[]) => {
       if (items) {
         items.push(item);
         return this.storage.set(dbKey, items);
@@ -22,13 +26,13 @@ export class DbService {
   }
 
   // Read
-  getElems(dbKey): Promise<ITask[]> {
+  getElems(dbKey): Promise<T[]> {
     return this.storage.get(dbKey);
   }
 
   //Delete
-  deleteElem(id: string, dbKey): Promise<ITask> {
-    return this.storage.get(dbKey).then((items: ITask[]) => {
+  deleteElem(id: string, dbKey): Promise<T> {
+    return this.storage.get(dbKey).then((items: T[]) => {
       if (!items || items.length === 0) {
         return null;
       }
@@ -43,13 +47,13 @@ export class DbService {
   }
 
   // Update
-  updateElem(elem : ITask, dbKey) : Promise<any>{
-    return this.storage.get(dbKey).then((items: ITask[]) => {
+  updateElem(elem : T, dbKey) : Promise<T>{
+    return this.storage.get(dbKey).then((items: T[]) => {
       if (!items || items.length === 0){
         return null
       }
 
-      let newItems : ITask[]
+      let newItems : T[]
 
       for (let i of items){
         if(i.id === elem.id){

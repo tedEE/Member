@@ -12,8 +12,7 @@ import {DbService} from '../../servises/db.service';
 })
 export class MainPage implements OnInit {
 
-  constructor(public modalController: ModalController,
-              private dbserv : DbService) { console.log('main constructor') }
+  constructor(private modalController: ModalController) { console.log('main constructor') }
 
   ngOnInit() {
   }
@@ -26,6 +25,6 @@ export class MainPage implements OnInit {
   }
 
   show(){
-    this.dbserv.getElems(dbKey).then(e => console.log(e))
+    // this.dbserv.getElems(dbKey).then(e => console.log(e))
   }
 }
