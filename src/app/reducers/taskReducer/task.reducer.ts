@@ -33,10 +33,9 @@ export const taskReducer = (state = initialState, action: TaskActions) => {
     case taskActionsType.update:
       return {
         ...state,
-        tasks : [
-          ...state.tasks,
-          action.payload
-        ]
+        tasks : state.tasks.map(t => t.id === action.payload.id ?
+          {...t, location : action.payload.location, hint : action.payload.hint} : t
+        )
       };
     default :
       return state;

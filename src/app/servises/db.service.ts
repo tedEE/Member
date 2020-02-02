@@ -53,7 +53,7 @@ export class DbService <T extends haveId> {
         return null
       }
 
-      let newItems : T[]
+      let newItems : T[] = []
 
       for (let i of items){
         if(i.id === elem.id){

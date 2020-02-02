@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import {ListNotifPage} from '../page/list-notif/list-notif.page';
 import {AddNotPage} from '../page/add-not/add-not.page';
-import {MainPage} from '../page/main/main.page';
 import {ModalPage} from '../page/modal/modal.page';
 
 @NgModule({
@@ -28,15 +27,11 @@ import {ModalPage} from '../page/modal/modal.page';
             path : 'add-notif',
             component : AddNotPage
           },
-          {
-            path : 'main',
-            component : MainPage
-          },
         ]
       },
     ])
   ],
-  declarations: [HomePage, ListNotifPage, AddNotPage, MainPage, ModalPage],
+  declarations: [HomePage, ListNotifPage, AddNotPage, ModalPage],
   entryComponents : [ModalPage]
 })
 export class HomePageModule {}

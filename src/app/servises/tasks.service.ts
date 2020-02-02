@@ -33,14 +33,14 @@ export class TasksService {
     });
   }
 
-  removeTaskForList(id: string) {
-    this.dbServise.deleteElem(id, dbKey).then(() => {
-      this.store$.dispatch(new DelTaskAction(id));
+  removeTaskForList(task: ITask) {
+    this.dbServise.deleteElem(task.id, dbKey).then(() => {
+      this.store$.dispatch(new DelTaskAction(task.id));
     });
   }
 
   updateTaskList(task: ITask) {
-    this.dbServise.updateElem(task, dbKey)
+    this.dbServise.updateElem(task, dbKey).then(() => this.store$.dispatch(new UpdateTaskAction(task)))
     // this.store$.dispatch(new UpdateTaskAction(task));
   }
 

@@ -21,13 +21,16 @@ export class ModalPage implements OnInit {
     console.log(this.taskForUpdated)
   }
 
-  closeModal() {
-    this.modalController.dismiss({
-      'dismissed': true
-    });
-  }
+  // closeModal() {
+  //   this.modalController.dismiss({
+  //     'dismissed': true
+  //   });
+  // }
 
   update(taskForUpdated) {
     this.taskServ.updateTaskList(taskForUpdated)
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 }
