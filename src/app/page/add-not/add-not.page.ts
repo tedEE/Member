@@ -21,7 +21,7 @@ export class AddNotPage implements OnInit {
 	task : ITask = {id : '', location : '', hint : ''}
 
 	constructor(private alertController: AlertController,
-							private tasksService : TasksService) {console.log('add-not constructor')}
+							private tasksService : TasksService,) {}
 
   ngOnInit() {
 	}
@@ -56,6 +56,7 @@ export class AddNotPage implements OnInit {
     const newTask = {...this.task} // дублирование объекта task
     this.clear()
     this.tasksService.addTaskToList(newTask)
+
   }
 
 }

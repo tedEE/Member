@@ -8,6 +8,8 @@ import { HomePage } from './home.page';
 import {ListNotifPage} from '../page/list-notif/list-notif.page';
 import {AddNotPage} from '../page/add-not/add-not.page';
 import {ModalPage} from '../page/modal/modal.page';
+import {SettingsPage} from '../page/settings/settings.page';
+import {SettingsPageModule} from '../page/settings/settings.module';
 
 @NgModule({
   imports: [
@@ -18,20 +20,25 @@ import {ModalPage} from '../page/modal/modal.page';
       {
         path: '',
         component: HomePage,
-        children : [
+        children: [
           {
-            path : 'list-notif',
-            component : ListNotifPage
+            path: 'list-notif',
+            component: ListNotifPage
           },
           {
-            path : 'add-notif',
-            component : AddNotPage
+            path: 'add-notif',
+            component: AddNotPage
+          },
+          {
+            path: 'settings',
+            component: SettingsPage
           },
         ]
       },
-    ])
+    ]),
+    SettingsPageModule
   ],
-  declarations: [HomePage, ListNotifPage, AddNotPage, ModalPage],
+  declarations: [HomePage, ListNotifPage, AddNotPage, ModalPage, SettingsPage],
   entryComponents : [ModalPage]
 })
 export class HomePageModule {}

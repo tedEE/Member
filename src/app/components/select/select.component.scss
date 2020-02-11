@@ -1,0 +1,38 @@
+*{
+  box-sizing: border-box;
+}
+.dropdown {
+  position: relative;
+  //временное свойство
+  width: 150px;
+}
+
+.dropdown_label{
+  cursor: pointer;
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid black;
+}
+
+.dropdown.open .dropdown_menu{
+  display: block;
+}
+
+.dropdown_menu{
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  border: 1px solid black;
+
+  display: none;
+  li{
+	padding: 10px;
+
+	&:hover{
+	  background: rgba(0, 0, 0, .2);
+	  cursor: pointer;
+	}
+  }
+}

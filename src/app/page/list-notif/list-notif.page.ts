@@ -46,6 +46,7 @@ export class ListNotifPage implements OnInit {
   }
 
   async delelem(task : ITask){
+    this.notificationServise.deleteNotificationMassege(task.id)
     // Создание диалогового окна Alert с вопросом об удалени
     const alert = await this.alertController.create({
       header: 'Предупреждение!',
@@ -73,7 +74,6 @@ export class ListNotifPage implements OnInit {
     });
 
   }
-
 
 
   async update(task : ITask){

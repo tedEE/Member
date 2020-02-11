@@ -4,6 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home/list-notif', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  {
+    path: 'settings',
+    loadChildren: () => import('./page/settings/settings.module').then( m => m.SettingsPageModule)
+  },
   // {
   //   path: 'modal',
   //   loadChildren: () => import('./page/modal/modal.module').then( m => m.ModalPageModule)

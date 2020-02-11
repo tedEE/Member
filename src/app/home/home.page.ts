@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
 		 private router : Router) {}
 
 	ngOnInit(){
+	  this.backButtonEvent()
 	}
 
 	backButtonEvent() {
