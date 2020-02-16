@@ -8,3 +8,11 @@ export interface ITask{
 export interface ITaskState {
   tasks : Array<ITask>
 }
+
+export type selectTime = string | number
+
+export interface ITimeSeting {
+  latString ?: string
+  stringTime : string,
+  numberTime : number
+}

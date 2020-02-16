@@ -1,0 +1,13 @@
+
+.select_element {
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-between;
+  //padding: 10px;
+}
+
+ion-button{
+  margin: 0;
+  --border-radius : 0%;
+}
+

@@ -1,8 +1,11 @@
-<div class="dropdown" (click)="open()" [ngClass]="{open : isOpen}" >
-  <div class="dropdown_label">
-    Selected
+<div class="container" [ngClass]="componentStyleDefinition() ?
+  styleNumberComponent : styleStringComponent">
+  <div class="dropdown"  (click)="open()" [ngClass]="{open : isOpen}" >
+    <div class="dropdown_label" >
+      {{selected}}
+    </div>
+    <ul class="dropdown_menu"  >
+      <li *ngFor="let t of time" (click)="selectItem(t)" >{{t}}</li>
+    </ul>
   </div>
-  <ul class="dropdown_menu"  >
-    <li *ngFor="let t of time" (click)="selectItem(t)" >{{t}}</li>
-  </ul>
 </div>

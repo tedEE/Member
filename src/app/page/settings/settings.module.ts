@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import {SelectComponent} from '../../components/select/select.component';
+import {AddTimeComponent} from '../../components/add-time/add-time.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,12 @@ import {SelectComponent} from '../../components/select/select.component';
     SettingsPageRoutingModule
   ],
   exports: [
+    AddTimeComponent,
     SelectComponent
   ],
   declarations: [
-    SelectComponent
+    SelectComponent,
+    AddTimeComponent
   ]
 })
 export class SettingsPageModule {}

@@ -3,8 +3,7 @@
 }
 .dropdown {
   position: relative;
-  //временное свойство
-  width: 150px;
+  width: 100%;
 }
 
 .dropdown_label{
@@ -24,7 +23,10 @@
   position: absolute;
   width: 100%;
   margin: 0;
+  // надо убрать бордер сверху
   border: 1px solid black;
+  z-index: 99;
+  background: #ffffff;
 
   display: none;
   li{
@@ -35,4 +37,16 @@
 	  cursor: pointer;
 	}
   }
+}
+
+.string_select{
+  width: 150px;
+}
+
+.number_select{
+  width: 50px;
+}
+
+.container{
+
 }
