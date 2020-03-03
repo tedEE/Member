@@ -19,8 +19,7 @@ import { AlertController } from '@ionic/angular';
 export class ListNotifPage implements OnInit {
 
   private tasks = this.tasksServ.tasks$
-  private taskId : string // переменная для передачи в модальное окно редактирования
-  // public tasks : Observable<ITask[]> = this.store$.pipe(select(selectTask))
+
   constructor(private notificationServise: NotificationService,
               private platform: Platform,
               private routeActiv: ActivatedRoute,
@@ -40,13 +39,12 @@ export class ListNotifPage implements OnInit {
     /**
      * получение из базы всех тасков и помещение их в store
      */
-    this.tasksServ.getTasks().then(arrayTask => arrayTask.map(
-      task => this.store$.dispatch(new AddTaskAction(task))
-    ) )
+    // this.tasksServ.getTasks().then(arrayTask => arrayTask.forEach(
+    //   task => this.store$.dispatch(new AddTaskAction(task))
+    // ) )
   }
 
   async delelem(task : ITask){
-    this.notificationServise.deleteNotificationMassege(task.id)
     // Создание диалогового окна Alert с вопросом об удалени
     const alert = await this.alertController.create({
       header: 'Предупреждение!',
@@ -58,6 +56,7 @@ export class ListNotifPage implements OnInit {
         }, {
           text: 'Удалить',
           handler: () => {
+            this.notificationServise.deleteNotificationMassege(task.id)
             this.tasksServ.removeTaskForList(task)
             // вызов Toast уведомления
             toast.present();
@@ -93,28 +92,28 @@ export class ListNotifPage implements OnInit {
   //   return await modal.present();
   // }
 
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Okay',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
+  // async presentAlertConfirm() {
+  //   const alert = await this.alertController.create({
+  //     header: 'Confirm!',
+  //     message: 'Message <strong>text</strong>!!!',
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel',
+  //         cssClass: 'secondary',
+  //         handler: (blah) => {
+  //           console.log('Confirm Cancel: blah');
+  //         }
+  //       }, {
+  //         text: 'Okay',
+  //         handler: () => {
+  //           console.log('Confirm Okay');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //
+  //   await alert.present();
+  // }
 
 }

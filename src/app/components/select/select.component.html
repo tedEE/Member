@@ -1,11 +1,13 @@
-<div class="container" [ngClass]="componentStyleDefinition() ?
+<div class="container" [ngClass]="typeElement === 'number' ?
   styleNumberComponent : styleStringComponent">
-  <div class="dropdown"  (click)="open()" [ngClass]="{open : isOpen}" >
+  <div class="dropdown"  (click)="openModal()" >
     <div class="dropdown_label" >
       {{selected}}
     </div>
-    <ul class="dropdown_menu"  >
-      <li *ngFor="let t of time" (click)="selectItem(t)" >{{t}}</li>
-    </ul>
   </div>
 </div>
+<app-modal-string-time
+        [isOpen]="isOpen"
+        [time]="time"
+        (onSelectTime)="onSelectTime($event)"
+        (onClose)="closeModal($event)"></app-modal-string-time>

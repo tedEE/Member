@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Storage} from '@ionic/storage';
-import {ITask} from '../resurses/interfaisis';
+
 
 interface haveId {
-  id : string
+  id : string | number
 }
 
 @Injectable({

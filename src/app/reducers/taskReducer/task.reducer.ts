@@ -1,15 +1,7 @@
 import {ITaskState} from '../../resurses/interfaisis';
 import {TaskActions, taskActionsType} from './task.actions';
 
-export const taskNode = 'state';
-
-// const initialState: ITaskState = {
-//   tasks: [{
-//     id: '1',
-//     location: 'location',
-//     hint: 'hint'
-//   }]
-// }
+export const taskNode = 'tasks';
 
 const initialState: ITaskState = {
   tasks: []

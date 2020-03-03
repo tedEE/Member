@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ITask, ITimeSeting} from '../resurses/interfaisis';
+import {ITask, ITimeSetting} from '../resurses/interfaisis';
 import {SettingsService} from './settings.service';
 
 @Injectable({
@@ -9,9 +9,11 @@ export class NotificationService {
 
 	constructor(private settingsServ : SettingsService) {}
 
-	private getSettingsTime() : Array <ITimeSeting>{
-	  let s = this.settingsServ.getTimeSettings()
+	private async getSettingsTime() : Promise <ITimeSetting[]>{
+	  let s : Array<ITimeSetting> = []
 
+    s = await this.settingsServ.getTimeSettings()
+    console.log(s)
     s.map(e=>{
       switch (e.stringTime) {
         case 'минут':
@@ -30,21 +32,27 @@ export class NotificationService {
           e.latString = 'month'
       }
     })
-
     return s
   }
 
 	createNotification(task : ITask){
-	  console.log(this.getSettingsTime())
 
     let id = 1
 
-    this.getSettingsTime().forEach(e =>{
-	    // @ts-ignore
-      cordova.plugins.notification.local.schedule([
-        { id: task.id + id, title: `${task.location} через ${e.stringTime}` ,foreground: true, trigger: { in: e.numberTime, unit: `${e.latString}` }, icon : "res://brain.png", smallIcon: "res://brain.png"},
-      ])
-      id ++
+    this.getSettingsTime().then(settingsTime =>{
+      settingsTime.forEach(e =>{
+        console.log(e)
+        // @ts-ignore
+        cordova.plugins.notification.local.schedule([
+          { id: task.id + id,
+            title: `${task.location} через ${e.numberTime} ${e.stringTime}`
+            ,foreground: true,
+            trigger: { in: e.numberTime, unit: `${e.latString}` },
+            icon : "res://brain.png",
+            smallIcon: "res://brain.png"},
+        ])
+        id ++
+      })
     })
 
   //   cordova.plugins.notification.local.schedule([

@@ -7,4 +7,3 @@ export const selectTask = createSelector(
   selectorTaskFeature,
   (state : ITaskState) : Array<ITask> => state.tasks
 )
-// закончил здесь

@@ -1,0 +1,9 @@
+<div class="modal_overlay" [ngClass]="{open : isOpen}" >
+  <div class="modal_window" >
+    <ion-content>
+      <div class="list_container" (click)="close($event)">
+        <div class="list_el" *ngFor="let t of time">{{t}}</div>
+      </div>
+    </ion-content>
+  </div>
+</div>

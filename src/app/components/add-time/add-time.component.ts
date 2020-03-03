@@ -1,6 +1,8 @@
 import {Component, OnInit,} from '@angular/core';
-import {ITimeSeting, selectTime} from '../../resurses/interfaisis';
+import {ITimeSetting, selectTime} from '../../resurses/interfaisis';
 import {SettingsService} from '../../servises/settings.service';
+import {Subject} from 'rxjs';
+import {scan} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-time',
@@ -9,8 +11,9 @@ import {SettingsService} from '../../servises/settings.service';
 })
 export class AddTimeComponent implements OnInit {
 
-  private selectedTimeSettings: Array<ITimeSeting>
-  private settings : ITimeSeting
+  private selectedTimeSettings: Array<ITimeSetting>
+  private settings : ITimeSetting
+  private stream$
   private time = {
     'минут' : 59,
     'часов' : 23,
@@ -18,17 +21,16 @@ export class AddTimeComponent implements OnInit {
     'недели': 3,
     'месяцев' : 12
   }
-
+  private resetStream$ = new Subject()
   private timeString: Array<string> = []
   private timeNumber: Array<number> = []
   private selectTimeString : string;
   private selectTimeNumber : number;
 
-  constructor(private settingsServ : SettingsService) {
-  }
+  constructor(private settingsServ : SettingsService) {}
+
 
   ngOnInit() {
-    this.selectedTimeSettings = this.settingsServ.getTimeSettings();
     this.fillArrayDefault()
   }
 
@@ -41,12 +43,14 @@ export class AddTimeComponent implements OnInit {
       case 'string':
         console.log('string');
         this.selectTimeString = e
+        this.resetStream$.next(true)
         this.fillArraysAtSelect(e)
         break
       default :
         return new Error('i don\'t now')
     }
     this.settings = {
+      id : Date.now(),
       stringTime : this.selectTimeString,
       numberTime : this.selectTimeNumber
     }
@@ -54,7 +58,6 @@ export class AddTimeComponent implements OnInit {
 
   addTime() {
     this.settingsServ.setTimeSettings(this.settings)
-    console.log(this.selectedTimeSettings)
   }
 
   /**
@@ -75,7 +78,5 @@ export class AddTimeComponent implements OnInit {
     for(let i = 1; i<=this.time[e]; i++){
       this.timeNumber.push(i)
     }
-
   }
-
 }

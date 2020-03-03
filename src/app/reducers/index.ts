@@ -6,15 +6,18 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import {ITaskState} from '../resurses/interfaisis';
+import {ISettingTimeState, ITaskState} from '../resurses/interfaisis';
 import {taskNode, taskReducer} from './taskReducer/task.reducer';
+import {settingTimeReduser, timeSettingNode} from './settingReduser/setting.reduser';
 
 export interface State {
-  [taskNode] : ITaskState
+  [taskNode] : ITaskState,
+  [timeSettingNode] : ISettingTimeState
 }
 
 export const reducers: ActionReducerMap<State> = {
-  [taskNode] : taskReducer
+  [taskNode] : taskReducer,
+  [timeSettingNode] : settingTimeReduser
 };
 
 

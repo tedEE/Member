@@ -12,6 +12,11 @@
           Выберите время уведомления
         </h4>
         <app-add-time></app-add-time>
+        <ion-list *ngFor="let i of settings$ | async">
+          <ion-item (click)="delete(i.id)">
+            <ion-label>{{i.numberTime}} {{i.stringTime}}</ion-label>
+          </ion-item>
+        </ion-list>
       </ion-col>
 
     </ion-row>

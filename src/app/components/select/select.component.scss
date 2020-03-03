@@ -7,10 +7,12 @@
 }
 
 .dropdown_label{
+  height: 36px;
   cursor: pointer;
   width: 100%;
-  padding: 5px 10px;
-  border: 1px solid black;
+  padding: 8px 10px;
+  //border: 1px solid black;
+  text-align: center;
 }
 
 .dropdown.open .dropdown_menu{
@@ -23,10 +25,10 @@
   position: absolute;
   width: 100%;
   margin: 0;
-  // надо убрать бордер сверху
-  border: 1px solid black;
+  text-align: center;
   z-index: 99;
   background: #ffffff;
+  border-top: 1px solid black;
 
   display: none;
   li{
@@ -40,13 +42,12 @@
 }
 
 .string_select{
-  width: 150px;
+  width: 110px;
+  border-right: 1px solid black;
 }
 
 .number_select{
-  width: 50px;
-}
-
-.container{
-
+  width: 70px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }

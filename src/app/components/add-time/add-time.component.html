@@ -1,16 +1,13 @@
 <div class="select_element" >
-  <app-select (onSelect)="onSelect($event)" [time]="timeString"></app-select>
-  <app-select (onSelect)="onSelect($event)" [time]="timeNumber" ></app-select>
+  <app-select (onSelect)="onSelect($event)"
+              [resetStream$]="resetStream$"
+              [time]="timeString"></app-select>
+  <app-select (onSelect)="onSelect($event)"
+              [resetStream$]="resetStream$"
+              [time]="timeNumber" ></app-select>
     <ion-button (click)="addTime()">
       <ion-icon slot="icon-only" name="add"></ion-icon>
     </ion-button>
 </div>
-<ion-card *ngFor="let i of selectedTimeSettings">
-  <ion-card-header>
-    <ion-card-title>Card Title</ion-card-title>
-  </ion-card-header>
 
-  <ion-card-content>
 
-  </ion-card-content>
-</ion-card>

@@ -8,6 +8,7 @@ import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import {SelectComponent} from '../../components/select/select.component';
 import {AddTimeComponent} from '../../components/add-time/add-time.component';
+import {ModalStringTimeComponent} from '../../components/modal-string-time/modal-string-time.component';
 
 @NgModule({
   imports: [
@@ -18,11 +19,14 @@ import {AddTimeComponent} from '../../components/add-time/add-time.component';
   ],
   exports: [
     AddTimeComponent,
-    SelectComponent
+    // SelectComponent,
+    // SelectNumberComponent,
+    // SelectStringComponent
   ],
   declarations: [
     SelectComponent,
-    AddTimeComponent
+    AddTimeComponent,
+    ModalStringTimeComponent,
   ]
 })
 export class SettingsPageModule {}
